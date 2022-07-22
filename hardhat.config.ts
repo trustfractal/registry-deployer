@@ -3,7 +3,7 @@ import "@nomicfoundation/hardhat-toolbox";
 
 import networks from "./src/networks";
 
-import "./tasks/deploy";
+import "./tasks";
 
 const config: HardhatUserConfig = {
   solidity: "0.8.9",

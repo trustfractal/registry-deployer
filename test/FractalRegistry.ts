@@ -3,13 +3,7 @@ import { expect } from "chai";
 
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 
-function bytes32(s: string): string {
-  let result = `0x${s}`;
-  while (result.length < 64 + 2) {
-    result = result + "0";
-  }
-  return result;
-}
+import { bytes32 } from "./helper";
 
 const ID_42 = bytes32("42");
 const ID_43 = bytes32("43");
