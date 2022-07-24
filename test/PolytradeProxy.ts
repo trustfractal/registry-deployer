@@ -16,7 +16,6 @@ describe("PolytradeProxy", () => {
   let user2: SignerWithAddress; // KYC but not in plus list
   let user3: SignerWithAddress; // KYC plus
 
-
   beforeEach(async () => {
     [root, user1, user2, user3] = await ethers.getSigners();
 

@@ -12,7 +12,7 @@ const config: HardhatUserConfig = {
     enabled: process.env.REPORT_GAS ? true : false,
     gasPrice: 100,
     currency: "USD",
-  }
+  },
 };
 
 export default config;

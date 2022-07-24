@@ -101,13 +101,13 @@ describe("FractalRegistry", () => {
   describe("access control", () => {
     it("fails when adding user address from not-root", async () => {
       await expect(
-        subject.connect(user1).addUserAddress(user2.address, ID_42)
+        subject.connect(user1).addUserAddress(user2.address, ID_42),
       ).to.be.revertedWith("Not allowed to mutate");
     });
 
     it("fails when removing user address from not-root", async () => {
       await expect(
-        subject.connect(user1).removeUserAddress(user2.address)
+        subject.connect(user1).removeUserAddress(user2.address),
       ).to.be.revertedWith("Not allowed to mutate");
     });
 
@@ -128,7 +128,7 @@ describe("FractalRegistry", () => {
       await subject.addUserAddress(user1.address, ID_42);
 
       await expect(
-        subject.connect(user1).addUserToList(ID_42, "foo_list")
+        subject.connect(user1).addUserToList(ID_42, "foo_list"),
       ).to.be.revertedWith("Not allowed to mutate");
     });
 
@@ -136,13 +136,13 @@ describe("FractalRegistry", () => {
       await subject.addUserAddress(user1.address, ID_42);
 
       await expect(
-        subject.connect(user1).removeUserFromList(ID_42, "foo_list")
+        subject.connect(user1).removeUserFromList(ID_42, "foo_list"),
       ).to.be.revertedWith("Not allowed to mutate");
     });
 
     it("addDelegate requires root permissions", async () => {
       await expect(
-        subject.connect(user1).addDelegate(delegate1.address)
+        subject.connect(user1).addDelegate(delegate1.address),
       ).to.be.revertedWith("Must be root");
     });
 
@@ -150,7 +150,7 @@ describe("FractalRegistry", () => {
       await subject.addDelegate(delegate1.address);
 
       await expect(
-        subject.connect(delegate1).addDelegate(delegate2.address)
+        subject.connect(delegate1).addDelegate(delegate2.address),
       ).to.be.revertedWith("Must be root");
     });
 
@@ -159,13 +159,13 @@ describe("FractalRegistry", () => {
       await subject.removeDelegate(delegate1.address);
 
       await expect(
-        subject.connect(delegate1).addUserAddress(user1.address, ID_42)
+        subject.connect(delegate1).addUserAddress(user1.address, ID_42),
       ).to.be.revertedWith("Not allowed to mutate");
     });
 
     it("removeDelegate requires root permissions", async () => {
       await expect(
-        subject.connect(user1).removeDelegate(delegate1.address)
+        subject.connect(user1).removeDelegate(delegate1.address),
       ).to.be.revertedWith("Not allowed to remove address");
     });
 

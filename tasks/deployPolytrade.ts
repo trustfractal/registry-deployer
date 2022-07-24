@@ -8,7 +8,7 @@ task("deploy:polytrade", "Deploys the FractalRegistry and PolytradeProxy")
     try {
       const FractalRegistry = await hre.ethers.getContractFactory("FractalRegistry");
       const registry = await FractalRegistry.deploy(root);
-    
+
       await registry.deployed();
       console.log(`registry address: ${registry.address}`);
 

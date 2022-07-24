@@ -6,7 +6,7 @@ task("deploy", "Deploys the FractalRegistry")
     try {
       const FractalRegistry = await hre.ethers.getContractFactory("FractalRegistry");
       const registry = await FractalRegistry.deploy(root);
-    
+
       await registry.deployed();
       console.log(registry.address);
     } catch (err) {
