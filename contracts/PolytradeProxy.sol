@@ -14,8 +14,6 @@ contract PolytradeProxy {
     }
 
     function hasPassedKYC(address addr) public view returns (bool) {
-        bytes32 fractalId = registry.getFractalId(addr);
-
-        return fractalId != 0 && registry.isUserInList(fractalId, kycLevel);
+        return registry.isUserInList(registry.getFractalId(addr), kycLevel);
     }
 }
