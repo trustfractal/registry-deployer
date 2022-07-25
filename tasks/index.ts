@@ -1,2 +1,3 @@
-export * from "./deployBase";
+export * from "./deployRegistry";
 export * from "./deployPolytrade";
+export * from "./addDelegates";
