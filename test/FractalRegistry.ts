@@ -3,10 +3,11 @@ import { expect } from "chai";
 
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 
-import { bytes32 } from "./helper";
+const bytes32 = ethers.utils.formatBytes32String;
 
 const ID_42 = bytes32("42");
 const ID_43 = bytes32("43");
+const EMPTY_BYTES = bytes32("");
 
 describe("FractalRegistry", () => {
   let subject: any;
@@ -28,7 +29,7 @@ describe("FractalRegistry", () => {
 
   describe("getFractalId", () => {
     it("is null with a fresh registry", async () => {
-      expect(await subject.getFractalId(user1.address)).to.equal(bytes32(""));
+      expect(await subject.getFractalId(user1.address)).to.equal(EMPTY_BYTES);
     });
 
     it("is the fractal id with a fractal id set", async () => {
@@ -46,7 +47,7 @@ describe("FractalRegistry", () => {
       await subject.addUserAddress(user1.address, ID_42);
       await subject.removeUserAddress(user1.address);
 
-      expect(await subject.getFractalId(user1.address)).to.equal(bytes32(""));
+      expect(await subject.getFractalId(user1.address)).to.equal(EMPTY_BYTES);
     });
   });
 
