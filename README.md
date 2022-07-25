@@ -1,6 +1,6 @@
 # Registry deployer
 
-This project aims to provide a simple environemnt to deploy the FractalRegistry smart contract to different chains.
+This project aims to provide a simple environment to deploy the FractalRegistry smart contract to different chains.
 
 ## Usage
 
