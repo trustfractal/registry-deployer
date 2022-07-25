@@ -1,22 +1,22 @@
 import { task } from "hardhat/config";
+import deploy from "../src/deploy";
 
-const KYC_LEVEL = "plust";
+const KYC_LEVEL = "plus";
 
-task("deploy:polytrade", "Deploys the FractalRegistry and PolytradeProxy")
-  .addParam("root", "The root address for the fractal registry")
-  .setAction(async ({ root }, hre) => {
+task("deploy:polytrade", "Deploys the PolytradeProxy")
+  .setAction(async (_args, hre) => {
+    const { get } = hre.deployments;
+    const { deployer } = await hre.getNamedAccounts();
+
     try {
-      const FractalRegistry = await hre.ethers.getContractFactory("FractalRegistry");
-      const registry = await FractalRegistry.deploy(root);
+      const registry = await get("FractalRegistry");
 
-      await registry.deployed();
-      console.log(`registry address: ${registry.address}`);
-
-      const PolytradeProxy = await hre.ethers.getContractFactory("PolytradeProxy");
-      const proxy = await PolytradeProxy.deploy(registry.address, KYC_LEVEL);
-
-      await proxy.deployed();
-      console.log(`proxy address: ${proxy.address}`);
+      await deploy(hre, "PolytradeProxy", {
+        contract: "PolytradeProxy",
+        args: [registry.address, KYC_LEVEL],
+        from: deployer,
+        log: true,
+      });
     } catch (err) {
       console.error(err);
       process.exitCode = 1;

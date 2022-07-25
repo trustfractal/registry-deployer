@@ -1,2 +1,2 @@
-export * from "./deploy";
+export * from "./deployBase";
 export * from "./deployPolytrade";

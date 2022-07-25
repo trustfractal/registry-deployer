@@ -8,8 +8,11 @@ This project aims to provide a simple environment to deploy the FractalRegistry 
 # Compile contracts
 yarn compile
 
-# Deploy contracts
-yarn hardhat --network <network> deploy --root <root_address>
+# Deploy FractalRegistry
+yarn hardhat --network <network> deploy:base --root <root_address>
+
+# Deploy PolytradeProxy
+yarn hardhat --network <network> deploy:polytrade
 ```
 
 ### Available networks

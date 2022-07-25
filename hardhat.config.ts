@@ -1,5 +1,6 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
+import "hardhat-deploy";
 
 import networks from "./src/networks";
 
@@ -12,6 +13,11 @@ const config: HardhatUserConfig = {
     enabled: process.env.REPORT_GAS ? true : false,
     gasPrice: 100,
     currency: "USD",
+  },
+  namedAccounts: {
+    deployer: {
+      default: 0,
+    },
   },
 };
 
