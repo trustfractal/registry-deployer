@@ -17,6 +17,7 @@ const config: HardhatUserConfig = {
   namedAccounts: {
     deployer: {
       default: 0,
+      mumbai: process.env.MUMBAI_ROOT_ADDRESS,
     },
   },
 };

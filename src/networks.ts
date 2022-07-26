@@ -6,7 +6,18 @@ export const networks : NetworksUserConfig = {
   },
   localhost: {
     url: "http://localhost:8545",
-    saveDeployments: true, // TODO: change to false later
+    saveDeployments: false,
+  },
+  mumbai: {
+    url: process.env.MUMBAI_RPC_URL,
+    accounts: [process.env.MUMBAI_ROOT_PRIVATE_KEY],
+    chainId: 80001,
+    verify: {
+      etherscan: {
+        apiKey: process.env.MUMBAI_POLYGONSCAN_API_KEY,
+        apiUrl: process.env.MUMBAI_POLYGONSCAN_API_URL,
+      },
+    },
   },
 };
 
