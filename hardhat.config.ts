@@ -11,7 +11,7 @@ const hardhatConfig: HardhatUserConfig = {
   solidity: "0.8.9",
   networks,
   gasReporter: {
-    enabled: process.env.REPORT_GAS ? true : false,
+    enabled: !!config.REPORT_GAS,
     gasPrice: 100,
     currency: "USD",
   },
