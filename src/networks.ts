@@ -1,5 +1,7 @@
 import { NetworksUserConfig } from "hardhat/types";
 
+import config from "./config";
+
 export const networks : NetworksUserConfig = {
   hardhat: {
     saveDeployments: false,
@@ -9,13 +11,13 @@ export const networks : NetworksUserConfig = {
     saveDeployments: false,
   },
   mumbai: {
-    url: process.env.MUMBAI_RPC_URL,
-    accounts: [process.env.MUMBAI_ROOT_PRIVATE_KEY],
+    url: config.MUMBAI_RPC_URL,
+    accounts: [config.MUMBAI_ROOT_PRIVATE_KEY],
     chainId: 80001,
     verify: {
       etherscan: {
-        apiKey: process.env.MUMBAI_POLYGONSCAN_API_KEY,
-        apiUrl: process.env.MUMBAI_POLYGONSCAN_API_URL,
+        apiKey: config.MUMBAI_POLYGONSCAN_API_KEY,
+        apiUrl: config.MUMBAI_POLYGONSCAN_API_URL,
       },
     },
   },

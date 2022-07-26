@@ -3,10 +3,11 @@ import "@nomicfoundation/hardhat-toolbox";
 import "hardhat-deploy";
 
 import networks from "./src/networks";
+import config from "./src/config";
 
 import "./tasks";
 
-const config: HardhatUserConfig = {
+const hardhatConfig: HardhatUserConfig = {
   solidity: "0.8.9",
   networks,
   gasReporter: {
@@ -17,9 +18,9 @@ const config: HardhatUserConfig = {
   namedAccounts: {
     deployer: {
       default: 0,
-      mumbai: process.env.MUMBAI_ROOT_ADDRESS,
+      mumbai: config.MUMBAI_ROOT_ADDRESS,
     },
   },
 };
 
-export default config;
+export default hardhatConfig;
