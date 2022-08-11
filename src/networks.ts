@@ -21,6 +21,17 @@ export const networks : NetworksUserConfig = {
       },
     },
   },
+  polygon: {
+    url: config.POLYGON_RPC_URL,
+    accounts: [config.POLYGON_DEPLOYER_PRIVATE_KEY],
+    chainId: 137,
+    verify: {
+      etherscan: {
+        apiKey: config.POLYGON_POLYGONSCAN_API_KEY,
+        apiUrl: config.POLYGON_POLYGONSCAN_API_URL,
+      },
+    },
+  },
 };
 
 export default networks;
