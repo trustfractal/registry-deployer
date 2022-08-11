@@ -8,7 +8,7 @@ export const networks : NetworksUserConfig = {
   },
   localhost: {
     url: "http://localhost:8545",
-    // saveDeployments: false,
+    saveDeployments: true,
   },
   mumbai: {
     url: config.MUMBAI_RPC_URL,
