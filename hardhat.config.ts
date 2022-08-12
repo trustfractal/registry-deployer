@@ -19,6 +19,7 @@ const hardhatConfig: HardhatUserConfig = {
     deployer: {
       default: 0,
       mumbai: config.MUMBAI_ROOT_ADDRESS,
+      polygon: config.POLYGON_DEPLOYER_ADDRESS,
     },
   },
 };
