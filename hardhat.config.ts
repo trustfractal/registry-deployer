@@ -8,7 +8,7 @@ import config from "./src/config";
 import "./tasks";
 
 const hardhatConfig: HardhatUserConfig = {
-  solidity: "0.8.9",
+  solidity: "0.8.16",
   networks,
   gasReporter: {
     enabled: !!config.REPORT_GAS,
