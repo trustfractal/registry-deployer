@@ -1,8 +1,26 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
+import "hardhat-deploy";
 
-const config: HardhatUserConfig = {
-  solidity: "0.8.9",
+import networks from "./src/networks";
+import config from "./src/config";
+
+import "./tasks";
+
+const hardhatConfig: HardhatUserConfig = {
+  solidity: "0.8.16",
+  networks,
+  gasReporter: {
+    enabled: !!config.REPORT_GAS,
+    gasPrice: 100,
+    currency: "USD",
+  },
+  namedAccounts: {
+    deployer: {
+      default: 0,
+      mumbai: config.MUMBAI_ROOT_ADDRESS,
+    },
+  },
 };
 
-export default config;
+export default hardhatConfig;

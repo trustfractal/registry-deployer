@@ -8,6 +8,7 @@ typechain-types
 ### Hardhat ###
 cache
 artifacts
+deployments/localhost
 
 ### macOS ###
 # General
