@@ -32,6 +32,17 @@ export const networks : NetworksUserConfig = {
       },
     },
   },
+  goerli: {
+    url: config.GOERLI_RPC_URL,
+    accounts: [config.GOERLI_DEPLOYER_PRIVATE_KEY],
+    chainId: 5,
+    verify: {
+      etherscan: {
+        apiKey: config.GOERLI_ETHERSCAN_API_KEY,
+        apiUrl: config.GOERLI_ETHERSCAN_API_URL,
+      },
+    },
+  },
 };
 
 export default networks;
