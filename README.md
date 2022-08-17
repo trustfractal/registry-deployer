@@ -2,6 +2,10 @@
 
 This project aims to provide a simple environment to deploy the FractalRegistry smart contract to different chains.
 
+## Setup
+
+Copy `.env.example` to `.env` and change accordingly.
+
 ## Usage
 
 ```bash
@@ -29,9 +33,9 @@ yarn hardhat --network <network> add-delegates <comma-separated address list>
 
 ```bash
 # Clean artifacts
-yarn clean 
+yarn clean
 
-# Test 
+# Test
 yarn test
 
 # Verify contract (requires etherscan configuration)
