@@ -1,0 +1,116 @@
+{
+  "address": "0x75ADb60A0bD28EE81133872401A76A55E215ED47",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "registryAddr",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "fractalId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "addSelf",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "listId",
+          "type": "string"
+        }
+      ],
+      "name": "addSelfToList",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "removeSelf",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "listId",
+          "type": "string"
+        }
+      ],
+      "name": "removeSelfFromList",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x1191ae2d0b490a9aec4785973539e7a3f8707b4aa270f03ba9e3a86d0661fd41",
+  "receipt": {
+    "to": null,
+    "from": "0x89f3648B47cD32d7A861241C84ad887d04E118bC",
+    "contractAddress": "0x75ADb60A0bD28EE81133872401A76A55E215ED47",
+    "transactionIndex": 14,
+    "gasUsed": "540992",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xf03fa256a943a765499618ed69ccea517aa5aad11c349be80edc8db174956272",
+    "transactionHash": "0x1191ae2d0b490a9aec4785973539e7a3f8707b4aa270f03ba9e3a86d0661fd41",
+    "logs": [],
+    "blockNumber": 7427040,
+    "cumulativeGasUsed": "1121051",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x4D9DE1bb481B9dA37A7a7E3a07F6f60654fEe7BB"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "4d4e3f2a1cbc1c47361956ff1dc085fc",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.16+commit.07a7930e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"registryAddr\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"fractalId\",\"type\":\"bytes32\"}],\"name\":\"addSelf\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"listId\",\"type\":\"string\"}],\"name\":\"addSelfToList\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"removeSelf\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"listId\",\"type\":\"string\"}],\"name\":\"removeSelfFromList\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"SelfServeRegistryOperator\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/SelfServeRegistryOperator.sol\":\"SelfServeRegistryOperator\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/FractalRegistry.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.7.0 <0.9.0;\\n\\n/// @title Fractal registry v0\\n/// @author Antoni Dikov and Shelby Doolittle\\ncontract FractalRegistry {\\n    address root;\\n    mapping(address => bool) public delegates;\\n\\n    mapping(address => bytes32) fractalIdForAddress;\\n    mapping(string => mapping(bytes32 => bool)) userLists;\\n\\n    constructor(address _root) {\\n        root = _root;\\n    }\\n\\n    /// @param addr is Eth address\\n    /// @return FractalId as bytes32\\n    function getFractalId(address addr) external view returns (bytes32) {\\n        return fractalIdForAddress[addr];\\n    }\\n\\n    /// @notice Adds a user to the mapping of Eth address to FractalId.\\n    /// @param addr is Eth address.\\n    /// @param fractalId is FractalId in bytes32.\\n    function addUserAddress(address addr, bytes32 fractalId) external {\\n        requireMutatePermission();\\n        fractalIdForAddress[addr] = fractalId;\\n    }\\n\\n    /// @notice Removes an address from the mapping of Eth address to FractalId.\\n    /// @param addr is Eth address.\\n    function removeUserAddress(address addr) external {\\n        requireMutatePermission();\\n        delete fractalIdForAddress[addr];\\n    }\\n\\n    /// @notice Checks if a user by FractalId exists in a specific list.\\n    /// @param userId is FractalId in bytes32.\\n    /// @param listId is the list id.\\n    /// @return bool if the user is the specified list.\\n    function isUserInList(bytes32 userId, string memory listId)\\n        external\\n        view\\n        returns (bool)\\n    {\\n        return userLists[listId][userId];\\n    }\\n\\n    /// @notice Add user by FractalId to a specific list.\\n    /// @param userId is FractalId in bytes32.\\n    /// @param listId is the list id.\\n    function addUserToList(bytes32 userId, string memory listId) external {\\n        requireMutatePermission();\\n        userLists[listId][userId] = true;\\n    }\\n\\n    /// @notice Remove user by FractalId from a specific list.\\n    /// @param userId is FractalId in bytes32.\\n    /// @param listId is the list id.\\n    function removeUserFromList(bytes32 userId, string memory listId) external {\\n        requireMutatePermission();\\n        delete userLists[listId][userId];\\n    }\\n\\n    /// @notice Only root can add delegates. Delegates have mutate permissions.\\n    /// @param addr is Eth address\\n    function addDelegate(address addr) external {\\n        require(msg.sender == root, \\\"Must be root\\\");\\n        delegates[addr] = true;\\n    }\\n\\n    /// @notice Removing delegates is only posible from root or by himself.\\n    /// @param addr is Eth address\\n    function removeDelegate(address addr) external {\\n        require(\\n            msg.sender == root || msg.sender == addr,\\n            \\\"Not allowed to remove address\\\"\\n        );\\n        delete delegates[addr];\\n    }\\n\\n    function requireMutatePermission() private view {\\n        require(\\n            msg.sender == root || delegates[msg.sender],\\n            \\\"Not allowed to mutate\\\"\\n        );\\n    }\\n}\\n\",\"keccak256\":\"0xc0300e1f6dc7e43ec84d30cab39f3e5226309ebaf77f60d67835859ad94ab483\",\"license\":\"MIT\"},\"contracts/SelfServeRegistryOperator.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.7.0 <0.9.0;\\n\\nimport {FractalRegistry} from \\\"./FractalRegistry.sol\\\";\\n\\n/// @title SelfServeRegistryOperator\\ncontract SelfServeRegistryOperator {\\n    FractalRegistry registry;\\n\\n    constructor(address registryAddr) {\\n        registry = FractalRegistry(registryAddr);\\n    }\\n\\n    function addSelf(bytes32 fractalId) external {\\n        registry.addUserAddress(msg.sender, fractalId);\\n    }\\n\\n    function removeSelf() external {\\n        registry.removeUserAddress(msg.sender);\\n    }\\n\\n    function addSelfToList(string memory listId) external {\\n        registry.addUserToList(sendersFractalId(), listId);\\n    }\\n\\n    function removeSelfFromList(string memory listId) external {\\n        registry.removeUserFromList(sendersFractalId(), listId);\\n    }\\n\\n    function sendersFractalId() internal view returns(bytes32) {\\n        bytes32 fractalId = registry.getFractalId(msg.sender);\\n        require(fractalId != 0, \\\"Sender's address must already be in the registry. Call addSelf first.\\\");\\n        return fractalId;\\n    }\\n}\\n\",\"keccak256\":\"0x5649892d3e7b8e98059709bf903eeeaf8ceec5e8feb207490ec6bf43fe722b66\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50604051610975380380610975833981810160405281019061003291906100db565b806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050610108565b600080fd5b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b60006100a88261007d565b9050919050565b6100b88161009d565b81146100c357600080fd5b50565b6000815190506100d5816100af565b92915050565b6000602082840312156100f1576100f0610078565b5b60006100ff848285016100c6565b91505092915050565b61085e806101176000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c80631454fc4f146100515780634d77db7b1461006d5780635e898dac14610089578063ffa56e2914610093575b600080fd5b61006b6004803603810190610066919061053f565b6100af565b005b610087600480360381019061008291906105be565b610146565b005b6100916101d6565b005b6100ad60048036038101906100a8919061053f565b610263565b005b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370491d7e6100f36102fa565b836040518363ffffffff1660e01b8152600401610111929190610679565b600060405180830381600087803b15801561012b57600080fd5b505af115801561013f573d6000803e3d6000fd5b5050505050565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663ef8b577333836040518363ffffffff1660e01b81526004016101a19291906106ea565b600060405180830381600087803b1580156101bb57600080fd5b505af11580156101cf573d6000803e3d6000fd5b5050505050565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a2af447a336040518263ffffffff1660e01b815260040161022f9190610713565b600060405180830381600087803b15801561024957600080fd5b505af115801561025d573d6000803e3d6000fd5b50505050565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663ce8767b26102a76102fa565b836040518363ffffffff1660e01b81526004016102c5929190610679565b600060405180830381600087803b1580156102df57600080fd5b505af11580156102f3573d6000803e3d6000fd5b5050505050565b60008060008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663d18c216e336040518263ffffffff1660e01b81526004016103569190610713565b602060405180830381865afa158015610373573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906103979190610743565b90506000801b81036103de576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016103d590610808565b60405180910390fd5b8091505090565b6000604051905090565b600080fd5b600080fd5b600080fd5b600080fd5b6000601f19601f8301169050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b61044c82610403565b810181811067ffffffffffffffff8211171561046b5761046a610414565b5b80604052505050565b600061047e6103e5565b905061048a8282610443565b919050565b600067ffffffffffffffff8211156104aa576104a9610414565b5b6104b382610403565b9050602081019050919050565b82818337600083830152505050565b60006104e26104dd8461048f565b610474565b9050828152602081018484840111156104fe576104fd6103fe565b5b6105098482856104c0565b509392505050565b600082601f830112610526576105256103f9565b5b81356105368482602086016104cf565b91505092915050565b600060208284031215610555576105546103ef565b5b600082013567ffffffffffffffff811115610573576105726103f4565b5b61057f84828501610511565b91505092915050565b6000819050919050565b61059b81610588565b81146105a657600080fd5b50565b6000813590506105b881610592565b92915050565b6000602082840312156105d4576105d36103ef565b5b60006105e2848285016105a9565b91505092915050565b6105f481610588565b82525050565b600081519050919050565b600082825260208201905092915050565b60005b83811015610634578082015181840152602081019050610619565b60008484015250505050565b600061064b826105fa565b6106558185610605565b9350610665818560208601610616565b61066e81610403565b840191505092915050565b600060408201905061068e60008301856105eb565b81810360208301526106a08184610640565b90509392505050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b60006106d4826106a9565b9050919050565b6106e4816106c9565b82525050565b60006040820190506106ff60008301856106db565b61070c60208301846105eb565b9392505050565b600060208201905061072860008301846106db565b92915050565b60008151905061073d81610592565b92915050565b600060208284031215610759576107586103ef565b5b60006107678482850161072e565b91505092915050565b7f53656e64657227732061646472657373206d75737420616c726561647920626560008201527f20696e207468652072656769737472792e2043616c6c2061646453656c66206660208201527f697273742e000000000000000000000000000000000000000000000000000000604082015250565b60006107f2604583610605565b91506107fd82610770565b606082019050919050565b60006020820190508181036000830152610821816107e5565b905091905056fea264697066735822122024e13f2329f039455eed10840cffe58ba1d9cda284e8f833681c4734a9306bc964736f6c63430008100033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c80631454fc4f146100515780634d77db7b1461006d5780635e898dac14610089578063ffa56e2914610093575b600080fd5b61006b6004803603810190610066919061053f565b6100af565b005b610087600480360381019061008291906105be565b610146565b005b6100916101d6565b005b6100ad60048036038101906100a8919061053f565b610263565b005b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370491d7e6100f36102fa565b836040518363ffffffff1660e01b8152600401610111929190610679565b600060405180830381600087803b15801561012b57600080fd5b505af115801561013f573d6000803e3d6000fd5b5050505050565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663ef8b577333836040518363ffffffff1660e01b81526004016101a19291906106ea565b600060405180830381600087803b1580156101bb57600080fd5b505af11580156101cf573d6000803e3d6000fd5b5050505050565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a2af447a336040518263ffffffff1660e01b815260040161022f9190610713565b600060405180830381600087803b15801561024957600080fd5b505af115801561025d573d6000803e3d6000fd5b50505050565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663ce8767b26102a76102fa565b836040518363ffffffff1660e01b81526004016102c5929190610679565b600060405180830381600087803b1580156102df57600080fd5b505af11580156102f3573d6000803e3d6000fd5b5050505050565b60008060008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663d18c216e336040518263ffffffff1660e01b81526004016103569190610713565b602060405180830381865afa158015610373573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906103979190610743565b90506000801b81036103de576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016103d590610808565b60405180910390fd5b8091505090565b6000604051905090565b600080fd5b600080fd5b600080fd5b600080fd5b6000601f19601f8301169050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b61044c82610403565b810181811067ffffffffffffffff8211171561046b5761046a610414565b5b80604052505050565b600061047e6103e5565b905061048a8282610443565b919050565b600067ffffffffffffffff8211156104aa576104a9610414565b5b6104b382610403565b9050602081019050919050565b82818337600083830152505050565b60006104e26104dd8461048f565b610474565b9050828152602081018484840111156104fe576104fd6103fe565b5b6105098482856104c0565b509392505050565b600082601f830112610526576105256103f9565b5b81356105368482602086016104cf565b91505092915050565b600060208284031215610555576105546103ef565b5b600082013567ffffffffffffffff811115610573576105726103f4565b5b61057f84828501610511565b91505092915050565b6000819050919050565b61059b81610588565b81146105a657600080fd5b50565b6000813590506105b881610592565b92915050565b6000602082840312156105d4576105d36103ef565b5b60006105e2848285016105a9565b91505092915050565b6105f481610588565b82525050565b600081519050919050565b600082825260208201905092915050565b60005b83811015610634578082015181840152602081019050610619565b60008484015250505050565b600061064b826105fa565b6106558185610605565b9350610665818560208601610616565b61066e81610403565b840191505092915050565b600060408201905061068e60008301856105eb565b81810360208301526106a08184610640565b90509392505050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b60006106d4826106a9565b9050919050565b6106e4816106c9565b82525050565b60006040820190506106ff60008301856106db565b61070c60208301846105eb565b9392505050565b600060208201905061072860008301846106db565b92915050565b60008151905061073d81610592565b92915050565b600060208284031215610759576107586103ef565b5b60006107678482850161072e565b91505092915050565b7f53656e64657227732061646472657373206d75737420616c726561647920626560008201527f20696e207468652072656769737472792e2043616c6c2061646453656c66206660208201527f697273742e000000000000000000000000000000000000000000000000000000604082015250565b60006107f2604583610605565b91506107fd82610770565b606082019050919050565b60006020820190508181036000830152610821816107e5565b905091905056fea264697066735822122024e13f2329f039455eed10840cffe58ba1d9cda284e8f833681c4734a9306bc964736f6c63430008100033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "title": "SelfServeRegistryOperator",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 202,
+        "contract": "contracts/SelfServeRegistryOperator.sol:SelfServeRegistryOperator",
+        "label": "registry",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_contract(FractalRegistry)194"
+      }
+    ],
+    "types": {
+      "t_contract(FractalRegistry)194": {
+        "encoding": "inplace",
+        "label": "contract FractalRegistry",
+        "numberOfBytes": "20"
+      }
+    }
+  }
+}
