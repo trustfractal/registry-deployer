@@ -12,7 +12,7 @@ export const networks : NetworksUserConfig = {
   },
   mumbai: {
     url: config.MUMBAI_RPC_URL,
-    accounts: [config.MUMBAI_ROOT_PRIVATE_KEY],
+    accounts: [config.MUMBAI_DEPLOYER_PRIVATE_KEY],
     chainId: 80001,
     verify: {
       etherscan: {

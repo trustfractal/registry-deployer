@@ -18,7 +18,7 @@ const hardhatConfig: HardhatUserConfig = {
   namedAccounts: {
     deployer: {
       default: 0,
-      mumbai: config.MUMBAI_ROOT_ADDRESS,
+      mumbai: config.MUMBAI_DEPLOYER_ADDRESS,
       polygon: config.POLYGON_DEPLOYER_ADDRESS,
       goerli: config.GOERLI_DEPLOYER_ADDRESS,
     },
