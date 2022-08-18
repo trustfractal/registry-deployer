@@ -20,6 +20,7 @@ const hardhatConfig: HardhatUserConfig = {
       default: 0,
       mumbai: config.MUMBAI_ROOT_ADDRESS,
       polygon: config.POLYGON_DEPLOYER_ADDRESS,
+      goerli: config.GOERLI_DEPLOYER_ADDRESS,
     },
   },
 };
