@@ -2,9 +2,15 @@ import { NetworksUserConfig } from "hardhat/types";
 
 import config from "./config";
 
+const automineConfig = config.AUTOMINE ? {} : {
+  auto: false,
+  interval: 3000,
+};
+
 export const networks : NetworksUserConfig = {
   hardhat: {
     saveDeployments: false,
+    mining: automineConfig,
   },
   localhost: {
     url: "http://localhost:8545",

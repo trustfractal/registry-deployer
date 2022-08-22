@@ -21,7 +21,10 @@ export const config : Record<string, any> = {
   GOERLI_DEPLOYER_PRIVATE_KEY: process.env.GOERLI_DEPLOYER_PRIVATE_KEY,
   GOERLI_DEPLOYER_ADDRESS: process.env.GOERLI_DEPLOYER_ADDRESS,
 
-  REPORT_GAS: process.env.REPORT_GAS || false,
+  // env vars will be converted to strings so this is the best (quick)
+  // way to check boolean values
+  AUTOMINE: process.env.AUTOMINE === "true" || process.env.AUTOMINE === "1",
+  REPORT_GAS: process.env.REPORT_GAS === "true" || process.env.REPORT_GAS === "1",
 };
 
 export default config;
