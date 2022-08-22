@@ -39,6 +39,7 @@
     "clean": "hardhat clean",
     "compile": "TS_NODE_TRANSPILE_ONLY=1 hardhat compile",
     "dev": "hardhat node",
+    "dev:no-automine": "AUTOMINE=0 hardhat node",
     "test": "hardhat --network hardhat test",
     "lint": "eslint . && solhint contracts/**/*.sol"
   }
