@@ -11,19 +11,19 @@ contract SelfServeRegistryOperator {
         registry = FractalRegistry(registryAddr);
     }
 
-    function addSelf(bytes32 fractalId) external {
+    function addSelf(bytes32 fractalId) public {
         registry.addUserAddress(msg.sender, fractalId);
     }
 
-    function removeSelf() external {
+    function removeSelf() public {
         registry.removeUserAddress(msg.sender);
     }
 
-    function addSelfToList(string memory listId) external {
+    function addSelfToList(string memory listId) public {
         registry.addUserToList(sendersFractalId(), listId);
     }
 
-    function removeSelfFromList(string memory listId) external {
+    function removeSelfFromList(string memory listId) public {
         registry.removeUserFromList(sendersFractalId(), listId);
     }
 
@@ -31,5 +31,15 @@ contract SelfServeRegistryOperator {
         bytes32 fractalId = registry.getFractalId(msg.sender);
         require(fractalId != 0, "Sender's address must already be in the registry. Call addSelf first.");
         return fractalId;
+    }
+
+    function addSelfToRegistry(bytes32 fractalId, string memory listId) external {
+        addSelf(fractalId);
+        addSelfToList(listId);
+    }
+
+    function removeSelfFromRegistry(string memory listId) external {
+        removeSelfFromList(listId);
+        removeSelf();
     }
 }
