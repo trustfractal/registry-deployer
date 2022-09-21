@@ -49,6 +49,17 @@ export const networks : NetworksUserConfig = {
       },
     },
   },
+  fuji: {
+    url: config.FUJI_RPC_URL,
+    accounts: [config.FUJI_DEPLOYER_PRIVATE_KEY],
+    chainId: 43113,
+    verify: {
+      etherscan: {
+        apiKey: config.FUJI_ETHERSCAN_API_KEY,
+        apiUrl: config.FUJI_ETHERSCAN_API_URL,
+      },
+    },
+  },
 };
 
 export default networks;
