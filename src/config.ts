@@ -27,6 +27,12 @@ export const config : Record<string, any> = {
   FUJI_DEPLOYER_PRIVATE_KEY: process.env.FUJI_DEPLOYER_PRIVATE_KEY,
   FUJI_DEPLOYER_ADDRESS: process.env.FUJI_DEPLOYER_ADDRESS,
 
+  AVALANCHE_RPC_URL: process.env.AVALANCHE_RPC_URL,
+  AVALANCHE_ETHERSCAN_API_URL: process.env.AVALANCHE_ETHERSCAN_API_URL,
+  AVALANCHE_ETHERSCAN_API_KEY: process.env.AVALANCHE_ETHERSCAN_API_KEY,
+  AVALANCHE_DEPLOYER_PRIVATE_KEY: process.env.AVALANCHE_DEPLOYER_PRIVATE_KEY,
+  AVALANCHE_DEPLOYER_ADDRESS: process.env.AVALANCHE_DEPLOYER_ADDRESS,
+
   // env vars will be converted to strings so this is the best (quick)
   // way to check boolean values
   AUTOMINE: process.env.AUTOMINE === "true" || process.env.AUTOMINE === "1",
