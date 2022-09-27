@@ -21,6 +21,8 @@ const hardhatConfig: HardhatUserConfig = {
       mumbai: config.MUMBAI_DEPLOYER_ADDRESS,
       polygon: config.POLYGON_DEPLOYER_ADDRESS,
       goerli: config.GOERLI_DEPLOYER_ADDRESS,
+      fuji: config.FUJI_DEPLOYER_ADDRESS,
+      avalanche: config.AVALANCHE_DEPLOYER_ADDRESS,
     },
   },
 };
