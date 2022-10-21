@@ -9,14 +9,14 @@ export const deploySelfServeRegistryOperator = async (
   const { deployer } = await hre.getNamedAccounts();
 
   try {
-    const dr = await deploy(hre, "SelfServeRegistryOperator", {
+    const { address: operatorAddress } = await deploy(hre, "SelfServeRegistryOperator", {
       contract: "SelfServeRegistryOperator",
       args: [registryAddress],
       from: deployer,
       log: true,
     });
 
-    await addDelegates({addrs: dr.address}, hre);
+    await addDelegates({addrs: operatorAddress, registryAddress}, hre);
   } catch (err) {
     console.error(err);
     process.exitCode = 1;

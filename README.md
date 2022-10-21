@@ -1,6 +1,6 @@
 # DID Registry deployer
 
-This project contains the Fractal DID Registry smart contract as well as a simple environment to deploy it to different chains.  
+This project contains the Fractal DID Registry smart contract as well as a simple environment to deploy it to different chains.
 It contains 2 smart contracts:
 1. FractalRegistry.sol - This is the DID Registry contract used to deploy on EVM chains.
 2. SelfServeRegistryOperator.sol - This is "backoffice" control used in the DID Registry demo. You can find the demo [here](https://did-registry.demo.fractal.id/) and the code [here](https://github.com/trustfractal/did-registry-demo-dapp).
@@ -63,11 +63,14 @@ yarn compile
 # Deploy FractalRegistry
 yarn hardhat --network <network> deploy:registry <root_address> [--delegates <comma-separated address list>]
 
+# Deploy PlaygroundRegistry
+yarn hardhat --network <network> deploy:playground-registry <root_address> [--delegates <comma-separated address list>]
+
 # Deploy PolytradeProxy
 yarn hardhat --network <network> deploy:polytrade
 
 # Add delegates
-yarn hardhat --network <network> add-delegates <comma-separated address list>
+yarn hardhat --network <network> add-delegates --registry-address <registry address> <comma-separated address list>
 ```
 
 ### Available networks
