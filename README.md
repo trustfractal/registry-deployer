@@ -1,6 +1,6 @@
 # DID Registry deployer
 
-This project contains the Fractal DID Registry smart contract as well as a simple environment to deploy it to different chains.  
+This project contains the Fractal DID Registry smart contract as well as a simple environment to deploy it to different chains.
 It contains 2 smart contracts:
 1. FractalRegistry.sol - This is the DID Registry contract used to deploy on EVM chains.
 2. SelfServeRegistryOperator.sol - This is "backoffice" control used in the DID Registry demo. You can find the demo [here](https://did-registry.demo.fractal.id/) and the code [here](https://github.com/trustfractal/did-registry-demo-dapp).
