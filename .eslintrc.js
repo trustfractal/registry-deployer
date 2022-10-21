@@ -14,7 +14,7 @@ module.exports = {
     // Possible Errors
     "no-misleading-character-class": "error",
     "no-template-curly-in-string": "error",
-    "no-console": "warn",
+    "no-console": "off",
 
     // Best practices
     "array-callback-return": "error",
