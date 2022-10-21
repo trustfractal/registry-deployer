@@ -2,12 +2,12 @@ import { HardhatRuntimeEnvironment } from "hardhat/types";
 import addDelegates from "./delegates";
 import deploy from "./deploy";
 
-export const deployRegistry = async ({ root, delegates }: {root: string, delegates?: string}, hre: HardhatRuntimeEnvironment) => {
+export const deployPlaygroundRegistry = async ({ root, delegates }: {root: string, delegates?: string}, hre: HardhatRuntimeEnvironment) => {
   const { deployer } = await hre.getNamedAccounts();
 
   try {
-    const { address: registryAddress } = await deploy(hre, "FractalRegistry", {
-      contract: "FractalRegistry",
+    const { address: registryAddress } = await deploy(hre, "PlaygroundRegistry", {
+      contract: "PlaygroundRegistry",
       args: [root],
       from: deployer,
       log: true,
@@ -22,4 +22,4 @@ export const deployRegistry = async ({ root, delegates }: {root: string, delegat
   }
 };
 
-export default deployRegistry;
+export default deployPlaygroundRegistry;

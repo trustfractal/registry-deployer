@@ -63,11 +63,14 @@ yarn compile
 # Deploy FractalRegistry
 yarn hardhat --network <network> deploy:registry <root_address> [--delegates <comma-separated address list>]
 
+# Deploy PlaygroundRegistry
+yarn hardhat --network <network> deploy:playground-registry <root_address> [--delegates <comma-separated address list>]
+
 # Deploy PolytradeProxy
 yarn hardhat --network <network> deploy:polytrade
 
 # Add delegates
-yarn hardhat --network <network> add-delegates <comma-separated address list>
+yarn hardhat --network <network> add-delegates --registry-address <registry address> <comma-separated address list>
 ```
 
 ### Available networks
