@@ -33,6 +33,12 @@ export const config : Record<string, any> = {
   AVALANCHE_DEPLOYER_PRIVATE_KEY: process.env.AVALANCHE_DEPLOYER_PRIVATE_KEY,
   AVALANCHE_DEPLOYER_ADDRESS: process.env.AVALANCHE_DEPLOYER_ADDRESS,
 
+  CHAPEL_RPC_URL: process.env.CHAPEL_RPC_URL,
+  CHAPEL_ETHERSCAN_API_URL: process.env.CHAPEL_ETHERSCAN_API_URL,
+  CHAPEL_ETHERSCAN_API_KEY: process.env.CHAPEL_ETHERSCAN_API_KEY,
+  CHAPEL_DEPLOYER_PRIVATE_KEY: process.env.CHAPEL_DEPLOYER_PRIVATE_KEY,
+  CHAPEL_DEPLOYER_ADDRESS: process.env.CHAPEL_DEPLOYER_ADDRESS,
+
   // env vars will be converted to strings so this is the best (quick)
   // way to check boolean values
   AUTOMINE: process.env.AUTOMINE === "true" || process.env.AUTOMINE === "1",

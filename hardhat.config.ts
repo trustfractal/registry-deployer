@@ -23,6 +23,7 @@ const hardhatConfig: HardhatUserConfig = {
       goerli: config.GOERLI_DEPLOYER_ADDRESS,
       fuji: config.FUJI_DEPLOYER_ADDRESS,
       avalanche: config.AVALANCHE_DEPLOYER_ADDRESS,
+      chapel: config.CHAPEL_DEPLOYER_ADDRESS,
     },
   },
 };

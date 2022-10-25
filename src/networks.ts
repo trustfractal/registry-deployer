@@ -71,6 +71,17 @@ export const networks : NetworksUserConfig = {
       },
     },
   },
+  chapel: {
+    url: config.CHAPEL_RPC_URL,
+    accounts: [config.CHAPEL_DEPLOYER_PRIVATE_KEY],
+    chainId: 97,
+    verify: {
+      etherscan: {
+        apiKey: config.CHAPEL_ETHERSCAN_API_KEY,
+        apiUrl: config.CHAPEL_ETHERSCAN_API_URL,
+      },
+    },
+  },
 };
 
 export default networks;
