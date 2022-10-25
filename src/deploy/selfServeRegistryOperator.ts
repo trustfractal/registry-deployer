@@ -16,7 +16,7 @@ export const deploySelfServeRegistryOperator = async (
       log: true,
     });
 
-    await addDelegates({addrs: operatorAddress, registryAddress}, hre);
+    await addDelegates({ addrs: operatorAddress, registryAddress }, hre);
   } catch (err) {
     console.error(err);
     process.exitCode = 1;
