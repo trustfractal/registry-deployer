@@ -39,6 +39,12 @@ export const config : Record<string, any> = {
   CHAPEL_DEPLOYER_PRIVATE_KEY: process.env.CHAPEL_DEPLOYER_PRIVATE_KEY,
   CHAPEL_DEPLOYER_ADDRESS: process.env.CHAPEL_DEPLOYER_ADDRESS,
 
+  BSC_RPC_URL: process.env.BSC_RPC_URL,
+  BSC_ETHERSCAN_API_URL: process.env.BSC_ETHERSCAN_API_URL,
+  BSC_ETHERSCAN_API_KEY: process.env.BSC_ETHERSCAN_API_KEY,
+  BSC_DEPLOYER_PRIVATE_KEY: process.env.BSC_DEPLOYER_PRIVATE_KEY,
+  BSC_DEPLOYER_ADDRESS: process.env.BSC_DEPLOYER_ADDRESS,
+
   // env vars will be converted to strings so this is the best (quick)
   // way to check boolean values
   AUTOMINE: process.env.AUTOMINE === "true" || process.env.AUTOMINE === "1",

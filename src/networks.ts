@@ -82,6 +82,17 @@ export const networks : NetworksUserConfig = {
       },
     },
   },
+  bsc: {
+    url: config.BSC_RPC_URL,
+    accounts: [config.BSC_DEPLOYER_PRIVATE_KEY],
+    chainId: 56,
+    verify: {
+      etherscan: {
+        apiKey: config.BSC_ETHERSCAN_API_KEY,
+        apiUrl: config.BSC_ETHERSCAN_API_URL,
+      },
+    },
+  },
 };
 
 export default networks;
