@@ -93,6 +93,30 @@ export const networks : NetworksUserConfig = {
       },
     },
   },
+  chiado: {
+    url: config.CHIADO_RPC_URL,
+    gasPrice: 1000000000,
+    accounts: [config.CHIADO_DEPLOYER_PRIVATE_KEY],
+    chainId: 10200,
+    verify: {
+      etherscan: {
+        apiKey: config.CHIADO_ETHERSCAN_API_KEY,
+        apiUrl: config.CHIADO_ETHERSCAN_API_URL,
+      },
+    },
+  },
+  gnosis: {
+    url: config.GNOSIS_RPC_URL,
+    gasPrice: 10000000000,
+    accounts: [config.GNOSIS_DEPLOYER_PRIVATE_KEY],
+    chainId: 100,
+    verify: {
+      etherscan: {
+        apiKey: config.GNOSIS_ETHERSCAN_API_KEY,
+        apiUrl: config.GNOSIS_ETHERSCAN_API_URL,
+      },
+    },
+  },
 };
 
 export default networks;

@@ -24,6 +24,7 @@ const hardhatConfig: HardhatUserConfig = {
       fuji: config.FUJI_DEPLOYER_ADDRESS,
       avalanche: config.AVALANCHE_DEPLOYER_ADDRESS,
       chapel: config.CHAPEL_DEPLOYER_ADDRESS,
+      chiado: config.CHAIDO_DEPLOYER_ADDRESS,
     },
   },
 };
