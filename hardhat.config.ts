@@ -25,6 +25,7 @@ const hardhatConfig: HardhatUserConfig = {
       avalanche: config.AVALANCHE_DEPLOYER_ADDRESS,
       chapel: config.CHAPEL_DEPLOYER_ADDRESS,
       chiado: config.CHAIDO_DEPLOYER_ADDRESS,
+      gnosis: config.GNOSIS_DEPLOYER_ADDRESS,
     },
   },
 };
