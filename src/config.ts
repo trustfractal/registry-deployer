@@ -45,6 +45,18 @@ export const config : Record<string, any> = {
   BSC_DEPLOYER_PRIVATE_KEY: process.env.BSC_DEPLOYER_PRIVATE_KEY,
   BSC_DEPLOYER_ADDRESS: process.env.BSC_DEPLOYER_ADDRESS,
 
+  CHIADO_RPC_URL: process.env.CHIADO_RPC_URL,
+  CHIADO_ETHERSCAN_API_URL: process.env.CHIADO_ETHERSCAN_API_URL,
+  CHIADO_ETHERSCAN_API_KEY: process.env.CHIADO_ETHERSCAN_API_KEY,
+  CHIADO_DEPLOYER_PRIVATE_KEY: process.env.CHIADO_DEPLOYER_PRIVATE_KEY,
+  CHIADO_DEPLOYER_ADDRESS: process.env.CHIADO_DEPLOYER_ADDRESS,
+
+  GNOSIS_RPC_URL: process.env.GNOSIS_RPC_URL,
+  GNOSIS_ETHERSCAN_API_URL: process.env.GNOSIS_ETHERSCAN_API_URL,
+  GNOSIS_ETHERSCAN_API_KEY: process.env.GNOSIS_ETHERSCAN_API_KEY,
+  GNOSIS_DEPLOYER_PRIVATE_KEY: process.env.GNOSIS_DEPLOYER_PRIVATE_KEY,
+  GNOSIS_DEPLOYER_ADDRESS: process.env.GNOSIS_DEPLOYER_ADDRESS,
+
   // env vars will be converted to strings so this is the best (quick)
   // way to check boolean values
   AUTOMINE: process.env.AUTOMINE === "true" || process.env.AUTOMINE === "1",
