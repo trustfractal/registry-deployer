@@ -14,7 +14,7 @@ For more information about Fractal's products, go [here](https://fractal.notion.
 ___
 Fractal's DID Registry enables you to verify the credentials associated with a wallet address in your smart contract (on-chain) or in your dApp.  The DID Registry is a smart contract that contains two public methods your dApp and smart contract can call to verify a credential. Registries are deployed on Karura, Avalanche, Gnosis (soon),  Aurora (soon) and Polygon. Registries will be deployed on other chains on a demand basis.
 
-In order to verify a credential, you call `getFractalId()` to get a `fractalId` associated with a wallet address. Every `fractalId` in the DID Registry corresponds to a unique human. You call `isUserInList()` to determine whether a fractalId exists in one of the Registry's maintained lists. Lists are currently maintained for KYC level and FATF list presence.
+In order to verify a credential, you call `getFractalId()` to get a `fractalId` associated with a wallet address. Every `fractalId` in the DID Registry corresponds to a unique human. You call `isUserInList()` to determine whether a fractalId exists in one of the Registry's maintained lists. Only client-specific lists are currently maintained.
 
 1. Users connect their wallet.
 2. Look up their KYC status of their address in the DID Registry.
